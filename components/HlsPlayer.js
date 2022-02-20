@@ -1,8 +1,7 @@
-import React from 'react'
+import React from 'react';
 import Hls from 'hls.js';
 
 class HlsPlayer extends React.Component {
-
     componentDidMount() {
         var video = document.getElementById('video');
         video.volume = 0;
@@ -12,7 +11,7 @@ class HlsPlayer extends React.Component {
             hls.loadSource(url);
             hls.attachMedia(video);
             hls.on(Hls.Events.MANIFEST_PARSED, function () {
-                console.log("play");
+                console.log('play');
                 video.play();
             });
         }
@@ -21,12 +20,12 @@ class HlsPlayer extends React.Component {
     render() {
         return (
             <div>
-                <video id="video" controls autoPlay></video>
+                <video id='video' controls autoPlay></video>
 
                 <style jsx>{`
-                #video {
-                    height: 50vh;
-                }
+                    #video {
+                        height: 50vh;
+                    }
                 `}</style>
             </div>
         );

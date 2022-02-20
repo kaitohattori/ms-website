@@ -33,6 +33,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# VSCode
+.vscode
+
 # external apps
 external-apps/logs
 external-apps/assets
