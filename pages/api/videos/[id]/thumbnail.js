@@ -19,8 +19,10 @@ const get = async (req, res) => {
     }
 }
 
-export default async (req, res) => {
+const api = async (req, res) => {
     if (req.method === 'GET') {
         get(req, res)
     }
 }
+
+export default api

@@ -24,12 +24,16 @@ function Header({ user, loading }) {
                   </Link>
                 </li>
                 <li>
-                  <a href="/api/auth/logout">Logout</a>
+                  <Link href={{ pathname: '/api/auth/logout' }}>
+                    <a>Logout</a>
+                  </Link>
                 </li>
               </>
             ) : (
               <li>
-                <a href="/api/auth/login">Login</a>
+                <Link href={{ pathname: '/api/auth/login' }}>
+                  <a>Login</a>
+                </Link>
               </li>
             ))}
         </ul>

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import RatingStars from './RatingStars'
 
 function VideoCard({ video }) {
@@ -7,8 +8,13 @@ function VideoCard({ video }) {
     return (
         <Link href={{ pathname: '/watch', query: { id: video.id } }}>
             <a>
-                <div className="img-container">
-                    <img className="img" src={thumbnailUrl} alt="image"></img>
+                <div className='img-container'>
+                    <Image
+                        src={thumbnailUrl}
+                        alt="image"
+                        layout='fill'
+                        objectFit='contain'
+                    />
                 </div>
                 <div className="info">
                     <div className="title-rate-container">
@@ -19,21 +25,10 @@ function VideoCard({ video }) {
                 </div>
 
                 <style jsx>{`
-                .vertical-flex {
-                    display: flex;
-                    flex-direction: column;
-                }
-
                 .img-container {
-                    height: 75%;
-                }
-
-                .img {
-                    height: 100%;
                     width: 100%;
-                    vertical-align: bottom;
-                    object-fit: cover;
-                    pointer-events: none;
+                    height: 75%;
+                    position: relative;
                 }
 
                 .info {

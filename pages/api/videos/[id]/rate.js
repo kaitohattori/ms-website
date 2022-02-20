@@ -23,8 +23,10 @@ const post = async (req, res) => {
     }
 }
 
-export default async (req, res) => {
+const api = async (req, res) => {
     if (req.method === 'POST') {
         withApiAuthRequired(post(req, res))
     }
 }
+
+export default api

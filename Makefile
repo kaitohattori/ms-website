@@ -4,6 +4,9 @@ EXTERNAL_APPS = postgresql ms-api ms-stream-api ms-recommendation-api
 run: ## Run on local
 	npm run dev
 
+lint: ## Check codestyle
+	npm run lint
+
 docker-build: ## Build on docker
 	docker build -t $(APP_NAME) .
 
