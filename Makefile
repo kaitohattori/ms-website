@@ -1,6 +1,9 @@
 APP_NAME = ms-website
 EXTERNAL_APPS = postgresql ms-api ms-stream-api ms-recommendation-api
 
+init: ## Initialize app
+	npm install
+
 run: ## Run on local
 	npm run dev
 
