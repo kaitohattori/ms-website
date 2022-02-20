@@ -7,10 +7,12 @@
         "plugin:import/recommended",
         "plugin:import/errors"
     ],
-    "roles": {
+    "rules": {
         "no-unused-vars": [
+            "error",
             {
-                "argsIgnorePattern": "_"
+                "argsIgnorePattern": "_",
+                "varsIgnorePattern": "_"
             }
         ]
     }
