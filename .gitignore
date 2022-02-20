@@ -37,5 +37,5 @@ yarn-error.log*
 .vscode
 
 # external apps
-external-apps/logs
-external-apps/assets
+/external-apps/logs
+/external-apps/assets
