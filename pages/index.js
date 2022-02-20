@@ -1,5 +1,4 @@
-import { getSession } from '@auth0/nextjs-auth0';
-import { useUser } from '@auth0/nextjs-auth0';
+import { getSession, useUser } from '@auth0/nextjs-auth0';
 import Layout from '../components/Layout';
 import VideoCard from '../components/VideoCard';
 import { VideoApiClient } from '../lib/VideoApiClient';
