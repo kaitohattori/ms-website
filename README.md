@@ -1,4 +1,4 @@
-# ms-website
+# MS Website
 
 ## 開発準備
 
