@@ -40,3 +40,57 @@ $ make external-end
 # ヘルプ
 $ make help
 ```
+
+## Deploy
+
+Deploy to minikube
+
+```
+# Start minikube
+$ minikube start
+
+# Use local image
+$ eval $(minikube docker-env)
+
+# Build docker image
+$ docker build -t ms-website .
+
+# Deploy
+$ kubectl apply -f deploy/deployment.yaml
+$ kubectl apply -f deploy/service.yaml
+$ kubectl apply -f deploy/ingress.yaml
+
+# Get all status
+$ kubectl get all | grep "ms-website"
+
+# Access to deployed app (Click the displayed url)
+$ minikube service ms-website --url
+```
+
+Enable Ingress
+
+```
+# Enable the Ingress controller
+$ minikube addons enable ingress
+
+# Run this command after installation
+$ minikube tunnel
+
+# setup host
+$ sudo vi /etc/hosts
+$ grep "ms-tv.local" /etc/hosts
+127.0.0.1 ms-tv.local
+
+# access
+$ curl -i -v http://ms-tv.local
+```
+
+minikube common commands
+
+```
+$ minikube start
+$ minikube status
+$ minikube dashboard
+$ minikube tunnel
+$ minikube stop
+```

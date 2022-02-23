@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-website-deployment
+  labels:
+    app: ms-website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-website
+  template:
+    metadata:
+      labels:
+        app: ms-website
+    spec:
+      containers:
+        - name: ms-website
+          image: ms-website:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
