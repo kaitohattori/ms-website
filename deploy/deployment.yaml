@@ -8,15 +8,26 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ms-website
+      app: ms-website-gateway
   template:
     metadata:
       labels:
-        app: ms-website
+        app: ms-website-gateway
     spec:
       containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /etc/nginx/conf.d
+              name: nginx-conf
         - name: ms-website
           image: ms-website:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
+      volumes:
+        - name: nginx-conf
+          configMap:
+            name: ms-website-nginx-conf
