@@ -15,6 +15,7 @@ docker-build: ## Build on docker
 
 docker-run: ## Run on docker
 	docker run --rm \
+		--add-host=localhost:host-gateway \
 		-p 3000:3000 \
 		--name $(APP_NAME) \
 		$(APP_NAME):latest
