@@ -1,6 +1,6 @@
 # MS Website
 
-## How to use
+## Prerequisites
 
 ```
 # Initialize app
