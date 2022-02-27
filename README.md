@@ -1,13 +1,13 @@
 # MS Website
 
-## 開発準備
+## How to use
 
 ```
-# App初期設定
+# Initialize app
 $ make init
 ```
 
-以下の環境変数を設定してください。
+Set environments
 
 ```
 AUTH0_SECRET=
@@ -17,27 +17,30 @@ AUTH0_CLIENT_ID=
 AUTH0_CLIENT_SECRET=
 AUTH0_SCOPE='openid profile read:videos'
 AUTH0_AUDIENCE=
+
+WEB_API_URL=
+STREAM_API_URL=
 ```
 
-## 実行コマンド
+## How to develop
 
 ```
-# 実行
+# Run on local
 $ make run
 
-# Dockerビルド
+# Build on docker
 $ make docker-build
 
-# Docker実行
+# Run on docker
 $ make docker-run
 
-# external appsを立ち上げる
+# Run external apps
 $ make external-run
 
-# external appsを終了する
+# End external apps
 $ make external-end
 
-# ヘルプ
+# Help
 $ make help
 ```
 
@@ -77,12 +80,12 @@ $ minikube addons enable ingress
 # Run this command after installation
 $ minikube tunnel
 
-# setup host
+# Setup host
 $ sudo vi /etc/hosts
 $ grep "ms-tv.local" /etc/hosts
 127.0.0.1 ms-tv.local
 
-# access
+# Access
 $ curl -i -v http://ms-tv.local
 ```
 
