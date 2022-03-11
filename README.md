@@ -15,7 +15,7 @@ AUTH0_BASE_URL=
 AUTH0_ISSUER_BASE_URL=
 AUTH0_CLIENT_ID=
 AUTH0_CLIENT_SECRET=
-AUTH0_SCOPE='openid profile read:videos'
+AUTH0_SCOPE='openid profile'
 AUTH0_AUDIENCE=
 
 WEB_API_URL=
@@ -62,7 +62,7 @@ $ docker build -t ms-website .
 $ kubectl apply -f deploy/configmap.yaml
 $ kubectl apply -f deploy/deployment.yaml
 $ kubectl apply -f deploy/service.yaml
-$ kubectl apply -f deploy/ingress.yaml
+$ kubectl apply -f deploy/gateway.yaml
 
 # Get all status
 $ kubectl get all | grep "ms-website"
@@ -71,12 +71,29 @@ $ kubectl get all | grep "ms-website"
 $ minikube service ms-website --url
 ```
 
-Enable Ingress
+Preparing Istio
 
 ```
-# Enable the Ingress controller
-$ minikube addons enable ingress
+# Download istio
+$ cd ~/Downloads
+$ curl -L https://istio.io/downloadIstio | sh -
+$ cd istio-1.13.1
+$ export PATH=$PWD/bin:$PATH
 
+# Install istio
+$ istioctl install
+$ kubectl label namespace default istio-injection=enabled
+
+# View the kiali dashboard
+$ cd ~/Downloads/istio-1.13.1
+$ kubectl apply -f samples/addons
+$ kubectl rollout status deployment/kiali -n istio-system
+$ istioctl dashboard kiali
+```
+
+Enable tunnel
+
+```
 # Run this command after installation
 $ minikube tunnel
 
@@ -86,7 +103,7 @@ $ grep "ms-tv.local" /etc/hosts
 127.0.0.1 ms-tv.local
 
 # Access
-$ curl -i -v http://ms-tv.local
+$ curl -i http://ms-tv.local
 ```
 
 minikube common commands
