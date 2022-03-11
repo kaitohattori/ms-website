@@ -1,10 +1,10 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: ms-website-istio-gateway
+  name: ms-website-external-gateway
 spec:
   selector:
-    istio: ingressgateway # use Istio default gateway implementation
+    istio: ingressgateway
   servers:
   - port:
       number: 80
@@ -18,12 +18,12 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: ms-website-istio
+  name: ms-website-vs
 spec:
   hosts:
   - "ms-tv.local"
   gateways:
-  - ms-website-istio-gateway
+  - ms-website-external-gateway
   http:
   - match:
     - uri:
