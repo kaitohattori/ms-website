@@ -31,13 +31,11 @@ external-end: ## End external apps
 	docker-compose down
 
 service-in: ## Service in app
-	kubectl apply -f deploy/configmap.yaml
 	kubectl apply -f deploy/deployment.yaml
 	kubectl apply -f deploy/service.yaml
 	kubectl apply -f deploy/gateway.yaml
 
 service-out: ## Service out app
-	kubectl delete -f deploy/configmap.yaml
 	kubectl delete -f deploy/deployment.yaml
 	kubectl delete -f deploy/service.yaml
 	kubectl delete -f deploy/gateway.yaml

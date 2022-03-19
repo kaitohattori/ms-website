@@ -7,17 +7,5 @@ spec:
     app: ms-website
   ports:
     - protocol: TCP
-      port: 3000
-
----
-
-apiVersion: v1 
-kind: Service
-metadata:
-  name: ms-website-gateway
-spec:
-  ports:
-  - port: 80
-    targetPort: 80
-  selector:
-    app: ms-website-gateway
+      port: 80
+      targetPort: 3000

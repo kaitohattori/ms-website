@@ -9,7 +9,11 @@ function Watch({ video, rateByUser }) {
 
     return (
         <Layout user={user} loading={isLoading}>
-            <HlsPlayer url={`/api/proxy/stream-api/${video.id}/stream`}></HlsPlayer>
+            {process.env.IS_ENABLED_ISTIO === 'true' ? (
+                <HlsPlayer url={`/api/v1/videos/${video.id}/stream`}></HlsPlayer>
+            ) : (
+                <HlsPlayer url={`/api/proxy/stream-api/${video.id}/stream`}></HlsPlayer>
+            )}
             <br />
             <RatingStars
                 rate={rateByUser}
