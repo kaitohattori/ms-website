@@ -9,7 +9,7 @@ export const config = {
 const apiProxy = createProxyMiddleware({
     target: process.env.STREAM_API_URL,
     changeOrigin: true,
-    pathRewrite: { [`^/api/proxy/stream-api`]: '/api/v1/videos' },
+    pathRewrite: { [`^/api/proxy/stream`]: '/api/v1/stream' },
     secure: false,
 });
 

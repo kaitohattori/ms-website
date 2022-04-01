@@ -10,9 +10,9 @@ function Watch({ video, rateByUser }) {
     return (
         <Layout user={user} loading={isLoading}>
             {process.env.NODE_ENV === 'production' ? (
-                <HlsPlayer url={`/api/v1/videos/${video.id}/stream`}></HlsPlayer>
+                <HlsPlayer url={`/api/v1/stream/${video.id}/playlist`}></HlsPlayer>
             ) : (
-                <HlsPlayer url={`/api/proxy/stream-api/${video.id}/stream`}></HlsPlayer>
+                <HlsPlayer url={`/api/proxy/stream/${video.id}/playlist`}></HlsPlayer>
             )}
             <br />
             <RatingStars

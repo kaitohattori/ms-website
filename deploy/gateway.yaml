@@ -26,7 +26,7 @@ spec:
   http:
     - match:
         - uri:
-            prefix: /api/v1/videos/
+            prefix: /api/v1/stream/
       route:
         - destination:
             port:
