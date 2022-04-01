@@ -6,38 +6,37 @@ spec:
   selector:
     istio: ingressgateway
   servers:
-  - port:
-      number: 80
-      name: http
-      protocol: HTTP
-    hosts:
-    - "ms-tv.local"
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "ms-tv.local"
 
 ---
-
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: ms-website-vs
 spec:
   hosts:
-  - "ms-tv.local"
+    - "ms-tv.local"
   gateways:
-  - ms-website-external-gateway
+    - ms-website-external-gateway
   http:
-  - match:
-    - uri:
-        prefix: /api/v1/videos/
-    route:
-    - destination:
-        port:
-          number: 80
-        host: ms-stream-api
-  - match:
-    - uri:
-        prefix: /
-    route:
-    - destination:
-        port:
-          number: 80
-        host: ms-website
+    - match:
+        - uri:
+            prefix: /api/v1/videos/
+      route:
+        - destination:
+            port:
+              number: 80
+            host: ms-stream-api
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            port:
+              number: 80
+            host: ms-website
