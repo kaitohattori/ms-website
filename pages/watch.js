@@ -15,11 +15,16 @@ function Watch({ video, rateByUser }) {
                 <HlsPlayer url={`/api/proxy/stream/${video.id}/playlist`}></HlsPlayer>
             )}
             <br />
-            <RatingStars
-                rate={rateByUser}
-                onChange={(rate) => handleRateChange(rate, video.id)}
-                isEnabledChange={true}
-            ></RatingStars>
+            {!isLoading &&
+                (user ? (
+                    <RatingStars
+                        rate={rateByUser}
+                        onChange={(rate) => handleRateChange(rate, video.id)}
+                        isEnabledChange={true}
+                    ></RatingStars>
+                ) : (
+                    <></>
+                ))}
 
             <style jsx global>{`
                 * {
