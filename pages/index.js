@@ -56,7 +56,7 @@ export async function getServerSideProps(context) {
         accessToken = session.accessToken;
     }
     const apiClient = new VideoApiClient(accessToken);
-    const videos = await apiClient.getFormattedVideos(ref);
+    const videos = await apiClient.getVideoObjects(ref);
     return {
         props: {
             videos: videos,
