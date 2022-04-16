@@ -11,7 +11,7 @@ const get = async (req, res) => {
     const { id } = req.query;
     try {
         const apiClient = new VideoApiClient();
-        const data = await apiClient.getVideosIdThumbnail(id);
+        const data = await apiClient.getVideoThumbnail(id);
         data.pipe(res);
     } catch (error) {
         console.error(error);

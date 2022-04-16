@@ -15,7 +15,7 @@ const post = async (req, res) => {
 
         const { accessToken } = await getAccessToken(req, res);
         const apiClient = new VideoApiClient(accessToken);
-        const data = await apiClient.postVideosIdRate(id, value);
+        const data = await apiClient.postVideoRate(id, value);
         res.status(200).json(data);
     } catch (error) {
         console.error(error);

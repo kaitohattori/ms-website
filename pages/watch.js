@@ -52,12 +52,12 @@ export async function getServerSideProps(context) {
     }
     const apiClient = new VideoApiClient(accessToken);
     // get video
-    const video = await apiClient.getVideosId(id);
+    const video = await apiClient.getVideo(id);
     // get rate
-    const rate = await apiClient.getVideosIdRate(id);
+    const rate = await apiClient.getVideoRate(id);
     const rateValue = rate ? parseFloat(rate.value) : 0;
     // post analysis
-    apiClient.postVideosIdAnalysis(id);
+    apiClient.postVideoAnalysis(id);
     return {
         props: {
             video: video,
