@@ -1,12 +1,5 @@
 import { VideoApiClient } from '../../../../lib/VideoApiClient';
 
-export const config = {
-    api: {
-        bodyParser: false,
-        externalResolver: true,
-    },
-};
-
 const get = async (req, res) => {
     const { id } = req.query;
     try {

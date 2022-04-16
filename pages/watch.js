@@ -39,7 +39,12 @@ function Watch({ video, rateByUser }) {
     );
 
     function handleRateChange(rate, videoId) {
-        fetch(`/api/videos/${videoId}/rate?value=${rate}`, { method: 'POST' });
+        fetch(`/api/videos/${videoId}/rate`, {
+            method: 'PATCH',
+            body: JSON.stringify({
+                value: rate,
+            }),
+        });
     }
 }
 
