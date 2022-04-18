@@ -50,24 +50,28 @@ function Watch({ video, rateByUser }) {
 
 export async function getServerSideProps(context) {
     const { id } = context.query;
+    let props = {};
     let accessToken = null;
     const session = getSession(context.req, context.res);
     if (session !== null && session.accessToken !== null) {
         accessToken = session.accessToken;
     }
+
     const apiClient = new VideoApiClient(accessToken);
-    // get video
-    const video = await apiClient.getVideo(id);
-    // get rate
-    const rate = await apiClient.getVideoRate(id);
-    const rateValue = rate ? parseFloat(rate.value) : 0;
-    // post analysis
-    apiClient.postVideoAnalysis(id);
+    try {
+        // get video
+        props.video = await apiClient.getVideo(id);
+        // gate rate
+        const rate = await apiClient.getVideoRate(id);
+        props.rateByUser = rate ? parseFloat(rate.value) : 0;
+        // post analysis
+        apiClient.postVideoAnalysis(id);
+    } catch (err) {
+        console.error(err.message);
+    }
+
     return {
-        props: {
-            video: video,
-            rateByUser: rateValue,
-        },
+        props: props,
     };
 }
 
